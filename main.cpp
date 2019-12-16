@@ -159,9 +159,6 @@ void DeleteAll(treeElem *root)
     }
     if(root!=NULL){
         delete root;
-        root=NULL;
-    }
-    //root = NULL;
 
 }
 
