@@ -91,7 +91,7 @@ treeElem* findmin(treeElem* p)
 
 treeElem* removemin(treeElem* p)
 {
-    if( p->left==0 )
+    if( p->left==NULL )
         return p->right;
     p->left = removemin(p->left);
     return balance(p);
@@ -99,7 +99,7 @@ treeElem* removemin(treeElem* p)
 
 treeElem* remove(treeElem* p, int k)
 {
-    if( !p ) return 0;
+    if( !p ) return NULL;
     if( k < p->id )
         p->left = remove(p->left,k);
     else if( k > p->id )
@@ -147,7 +147,23 @@ treeElem* findElem(treeElem* root, int id){
     }
     return root;
 }
+void DeleteAll(treeElem *root)
+{
+    if (root->left!=NULL)
+    {
+        DeleteAll(root->left);
+    }
+    if (root->right!=NULL)
+    {
+        DeleteAll(root->right);
+    }
+    if(root!=NULL){
+        delete root;
+        root=NULL;
+    }
+    //root = NULL;
 
+}
 
 int main() {
     treeElem a(0);
@@ -158,5 +174,6 @@ int main() {
     print_tree(root);
     Print(root, root->height);
     cout<<findElem(root, 0);
+    DeleteAll(root);
     return 0;
 }
